@@ -52,17 +52,22 @@ menu = {
 
 # 1. Set up order list. Order list will store a list of dictionaries for
 # menu item name, item price, and quantity ordered
-
+order_list = []
 
 # Launch the store and present a greeting to the customer
-print("Welcome to the variety food truck.")
+print("Welcome to the Variety Food Truck!")
 
 # Customers may want to order multiple items, so let's create a continuous
 # loop
 place_order = True
 while place_order:
     # Ask the customer from which menu category they want to order
-    print("From which menu would you like to order? ")
+    selected_menu = input("Which menu would you like to order from? ")
+    if selected_menu.isdigit():
+        print(f"You have selected the {menu[selected_menu]} menu.")
+    else:
+            print("Our apologies, that is not part of our menu.")
+
 
     # Create a variable for the menu item number
     i = 1
