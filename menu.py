@@ -117,12 +117,10 @@ while place_order:
                     i += 1
             # 2. Ask customer to input menu item number
             meal_item = input(f"What {menu_category_name} item would you like to order? ")
-
             # 3. Check if the customer typed a number
             if meal_item.isdigit():
                 # Convert the menu selection to an integer
                 meal_item = int(meal_item)
-
                 # 4. Check if the menu selection is in the menu items
                 if meal_item in menu_items:
                     # Store the item name as a variable
@@ -137,6 +135,7 @@ while place_order:
                     else:
                         quantity = 1
                     # Add the item name, price, and quantity to the order list
+                    # Also checking if item is already on order list
                     item_found = False
                     for order in order_list:
                         if order['Item name'] == selected_item:
@@ -153,14 +152,15 @@ while place_order:
 
                     # Tell the customer that their input isn't valid
                 else:
-                    print('That is an invalid input.')
-            else:
+                    print('That is an invalid input, please select an item number.')
             # Tell the customer they didn't select a menu option
-             print("That is not on today's menu.")
-        else:
+            else:
+                print(f"{meal_item} is not a menu option.")
         # Tell the customer they didn't select a number
-            print("You didn't select a number.")
-
+        else:
+            print("That item number is not available.")
+    else:
+        print("Please select a number from the menu.")
     while True:
         # Ask the customer if they would like to order anything else
         keep_ordering = input("Would you like to keep ordering? (Y)es or (N)o ")
@@ -213,4 +213,4 @@ for item in order_list:
 # Multiply the price by quantity for each item in the order list, then sum()
 # and print the prices.
 order_total = sum([item['Price'] * item['Quantity'] for item in order_list])
-print(f"Your total today is ${round(order_total, 2)}. Will that be cash or credit?")
+print(f"Your total today is ${order_total:.2f}. Will that be cash or credit?")
