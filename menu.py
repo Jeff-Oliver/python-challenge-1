@@ -213,4 +213,4 @@ for item in order_list:
 # Multiply the price by quantity for each item in the order list, then sum()
 # and print the prices.
 order_total = sum([item['Price'] * item['Quantity'] for item in order_list])
-print(f"Your total today is ${order_total:.2f}. Will that be cash or credit?")
+print(f"Your total today is ${order_total:,.2f}. Will that be cash or credit?")
